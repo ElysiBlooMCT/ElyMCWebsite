@@ -2,4 +2,4 @@
 
 Simple website for a Minecraft server.
 
-Open `/home/runner/work/ElysiBlooMCT/ElysiBlooMCT/hooangtungg/ElysiBlooMCT/index.html` in a browser to view it.
+Open `index.html` in a browser to view it locally.

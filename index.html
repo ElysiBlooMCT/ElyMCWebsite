@@ -11,8 +11,8 @@
       body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: linear-gradient(180deg, #16213e 0%, #0f3460 45%, #1a1a2e 100%);
-        color: #f5f5f5;
+        background: linear-gradient(180deg, #0b132b 0%, #1c2541 45%, #111827 100%);
+        color: #ffffff;
       }
       .container {
         max-width: 900px;
@@ -30,14 +30,35 @@
         padding: 2rem;
       }
       .server-ip {
-        display: inline-block;
-        margin-top: 1rem;
         font-size: 1.25rem;
         font-weight: bold;
         background: #4caf50;
         color: #081c15;
         border-radius: 0.5rem;
         padding: 0.6rem 1rem;
+      }
+      .server-connect {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .copy-button {
+        background: #22c55e;
+        border: 0;
+        border-radius: 0.5rem;
+        color: #052e16;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 0.6rem 0.8rem;
+      }
+      .copy-button:focus-visible,
+      .copy-button:hover {
+        background: #4ade80;
+      }
+      .copy-status {
+        font-weight: bold;
+        min-height: 1.25rem;
       }
       .grid {
         display: grid;
@@ -63,7 +84,14 @@
         <h1>ElysiBlooMCT</h1>
         <p>Welcome to our Minecraft server website.</p>
         <p>Build, survive, and play with the community.</p>
-        <p class="server-ip">Server IP: play.elysibloomct.net</p>
+        <p class="server-connect">
+          Server IP:
+          <code aria-label="Minecraft server address" class="server-ip" id="server-ip">play.elysibloomct.net</code>
+          <button aria-label="Copy server IP" class="copy-button" id="copy-ip" type="button">
+            Copy
+          </button>
+          <span class="copy-status" id="copy-status" role="status" aria-live="polite"></span>
+        </p>
       </section>
 
       <section class="grid" aria-label="Server highlights">
@@ -81,7 +109,49 @@
         </article>
       </section>
 
-      <footer>Version: Java Edition 1.20+</footer>
+      <footer aria-label="Server version">Version: Java Edition 1.20+</footer>
     </main>
+    <script>
+      const copyButton = document.getElementById("copy-ip");
+      const serverIp = document.getElementById("server-ip");
+      const copyStatus = document.getElementById("copy-status");
+
+      function copyWithFallback(value) {
+        try {
+          const textArea = document.createElement("textarea");
+          textArea.value = value;
+          textArea.setAttribute("readonly", "");
+          textArea.style.position = "absolute";
+          textArea.style.left = "-9999px";
+          document.body.appendChild(textArea);
+          textArea.select();
+          const copied = document.execCommand("copy");
+          document.body.removeChild(textArea);
+          return Boolean(copied);
+        } catch {
+          return false;
+        }
+      }
+
+      if (copyButton && serverIp && copyStatus) {
+        copyButton.addEventListener("click", async () => {
+          const ip = serverIp.textContent.trim();
+          try {
+            if (navigator.clipboard && window.isSecureContext) {
+              await navigator.clipboard.writeText(ip);
+            } else if (!copyWithFallback(ip)) {
+              throw new Error("Failed to copy to clipboard");
+            }
+            copyStatus.textContent = "Copied!";
+          } catch (err) {
+            console.error("Failed to copy server IP:", err);
+            copyStatus.textContent = "Failed";
+          }
+          setTimeout(() => {
+            copyStatus.textContent = "";
+          }, 2000);
+        });
+      }
+    </script>
   </body>
 </html>
