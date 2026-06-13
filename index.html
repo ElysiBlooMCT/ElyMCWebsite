@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ElysiBlooMCT - Minecraft Server</title>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(180deg, #16213e 0%, #0f3460 45%, #1a1a2e 100%);
+        color: #f5f5f5;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem 1rem 3rem;
+      }
+      h1,
+      h2 {
+        margin: 0 0 0.75rem;
+      }
+      .hero {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0.75rem;
+        padding: 2rem;
+      }
+      .server-ip {
+        display: inline-block;
+        margin-top: 1rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        background: #4caf50;
+        color: #081c15;
+        border-radius: 0.5rem;
+        padding: 0.6rem 1rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .card {
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 0.75rem;
+        padding: 1rem;
+      }
+      footer {
+        margin-top: 2rem;
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero" aria-label="Server introduction">
+        <h1>ElysiBlooMCT</h1>
+        <p>Welcome to our Minecraft server website.</p>
+        <p>Build, survive, and play with the community.</p>
+        <p class="server-ip">Server IP: play.elysibloomct.net</p>
+      </section>
+
+      <section class="grid" aria-label="Server highlights">
+        <article class="card">
+          <h2>Game Modes</h2>
+          <p>Survival, Skyblock, and regular community events.</p>
+        </article>
+        <article class="card">
+          <h2>Features</h2>
+          <p>Friendly staff, anti-grief protection, and player shops.</p>
+        </article>
+        <article class="card">
+          <h2>Rules</h2>
+          <p>Respect players, no cheating, and keep chat friendly.</p>
+        </article>
+      </section>
+
+      <footer>Version: Java Edition 1.20+</footer>
+    </main>
+  </body>
+</html>
