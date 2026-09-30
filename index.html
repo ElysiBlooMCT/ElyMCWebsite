@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Landing page giới thiệu server Minecraft cộng đồng với chế độ chơi đa dạng và hướng dẫn tham gia nhanh."
+    />
+    <title>PixelRealm - Minecraft Community Server</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Bỏ qua đến nội dung chính</a>
+    <header class="site-header" id="top">
+      <div class="container nav-wrap">
+        <a href="#top" class="brand" aria-label="PixelRealm Home">
+          <span class="brand-mark" aria-hidden="true">▣</span>
+          <span>PixelRealm</span>
+        </a>
+        <nav aria-label="Điều hướng chính">
+          <ul class="nav-links">
+            <li><a href="#about">Giới thiệu</a></li>
+            <li><a href="#modes">Game modes</a></li>
+            <li><a href="#join">Tham gia</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div>
+            <p class="eyebrow">Minecraft Community Server</p>
+            <h1 id="hero-title">Phiêu lưu cùng cộng đồng tại PixelRealm</h1>
+            <p class="hero-text">
+              Một server Minecraft chung dành cho mọi người: xây dựng, sinh tồn,
+              minigame và các sự kiện theo mùa trong không gian an toàn, thân
+              thiện.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#join">Chơi ngay</a>
+              <button class="btn btn-secondary" id="copy-ip-btn" type="button">
+                Copy IP server
+              </button>
+            </div>
+            <p class="server-ip" aria-live="polite">
+              IP: <strong id="server-ip">play.pixelrealm.example</strong>
+              <span id="copy-status" role="status"></span>
+            </p>
+          </div>
+          <div class="hero-panel" aria-hidden="true">
+            <div class="pixel-stack">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <h2 id="about-title">Giới thiệu server</h2>
+          <p>
+            PixelRealm là không gian mở cho người chơi mới lẫn kỳ cựu. Server
+            tập trung vào trải nghiệm cộng đồng: xây cùng nhau, khám phá map,
+            và tạo nên những câu chuyện riêng.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="modes" aria-labelledby="modes-title">
+        <div class="container">
+          <h2 id="modes-title">Game modes</h2>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Survival Co-op</h3>
+              <p>Sinh tồn, phát triển căn cứ và bảo vệ thành quả cùng bạn bè.</p>
+            </article>
+            <article class="card">
+              <h3>Skyblock</h3>
+              <p>Bắt đầu từ hòn đảo nhỏ, mở rộng tài nguyên và xây đế chế trên trời.</p>
+            </article>
+            <article class="card">
+              <h3>Mini Games</h3>
+              <p>Đua tốc độ, PvP vui vẻ, parkour và nhiều thử thách ngắn theo tuần.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="features-title">
+        <div class="container">
+          <h2 id="features-title">Tính năng nổi bật</h2>
+          <ul class="feature-list">
+            <li>Hệ thống anti-grief cơ bản giúp bảo vệ khu vực đã đăng ký.</li>
+            <li>Event cộng đồng định kỳ với phần thưởng trang trí độc đáo.</li>
+            <li>Kênh hỗ trợ tân thủ và hướng dẫn khởi đầu nhanh.</li>
+            <li>Bảng xếp hạng minh họa tiến trình và thành tích người chơi.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="stats-title">
+        <div class="container">
+          <h2 id="stats-title">Tình trạng cộng đồng (minh họa)</h2>
+          <div class="card-grid stats-grid">
+            <article class="card stat">
+              <p class="stat-label">Online hiện tại</p>
+              <p class="stat-value">128+</p>
+            </article>
+            <article class="card stat">
+              <p class="stat-label">Thành viên Discord</p>
+              <p class="stat-value">4.5K</p>
+            </article>
+            <article class="card stat">
+              <p class="stat-label">Uptime server</p>
+              <p class="stat-value">99.9%</p>
+            </article>
+          </div>
+          <p class="note">
+            * Dữ liệu trên là mock để minh họa giao diện khi chưa kết nối backend.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="join" aria-labelledby="join-title">
+        <div class="container">
+          <h2 id="join-title">Hướng dẫn tham gia</h2>
+          <ol class="steps">
+            <li>Mở Minecraft Java Edition phiên bản tương thích.</li>
+            <li>Chọn Multiplayer → Add Server.</li>
+            <li>Nhập tên tùy chọn và IP: <strong>play.pixelrealm.example</strong>.</li>
+            <li>Bấm Join Server, hoàn tất xác thực trong game và bắt đầu chơi.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="container">
+          <h2 id="faq-title">FAQ nhanh</h2>
+          <div class="faq-list">
+            <details>
+              <summary>Server có miễn phí tham gia không?</summary>
+              <p>Có. Đây là server cộng đồng, miễn phí và ưu tiên trải nghiệm công bằng.</p>
+            </details>
+            <details>
+              <summary>Người mới có được hỗ trợ không?</summary>
+              <p>Có. Bạn có thể xem hướng dẫn nhanh trong game hoặc hỏi đội ngũ mod.</p>
+            </details>
+            <details>
+              <summary>Có thể chơi cùng bạn trên nhiều khu vực không?</summary>
+              <p>Có, miễn là mọi người dùng đúng phiên bản và IP server.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>© <span id="year"></span> PixelRealm. Crafted for the Minecraft community.</p>
+        <a href="#top">Lên đầu trang</a>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
