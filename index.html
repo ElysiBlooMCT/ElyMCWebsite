@@ -7,8 +7,15 @@
       name="description"
       content="ElysiBlooMCT - server Minecraft cộng đồng với thế giới sinh tồn, phiêu lưu và những sự kiện ngập tràn sắc hồng."
     />
-    <meta name="theme-color" content="#16091e" />
+    <meta name="theme-color" content="#12050c" />
+    <meta name="color-scheme" content="dark" />
     <title>ElysiBlooMCT | Minecraft Community Server</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pixelify+Sans:wght@500;700&display=swap"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -18,7 +25,9 @@
         <a href="#top" class="brand" aria-label="ElysiBlooMCT trang chủ">
           <img
             class="brand-logo"
-            src="./RUIDbcf7c16b5ec74af484df331f7d2fbcb4.png"
+            src="./logo.png"
+            width="960"
+            height="181"
             alt="ElysiBlooMCT"
           />
         </a>
@@ -50,19 +59,20 @@
                 Copy IP server
               </button>
             </div>
-            <p class="server-ip" aria-live="polite">
-              IP: <strong id="server-ip">mc.elysibloomct.qzz.io</strong>
+            <p class="copy-feedback" aria-live="polite">
               <span id="copy-status" role="status"></span>
             </p>
           </div>
           <div class="hero-panel">
-            <div class="sparkle sparkle-one">✦</div>
-            <div class="sparkle sparkle-two">✧</div>
-            <img
-              class="hero-logo"
-              src="./RUIDbcf7c16b5ec74af484df331f7d2fbcb4.png"
-              alt="Logo ElysiBlooMCT"
-            />
+            <div class="sparkle sparkle-one" aria-hidden="true">✦</div>
+            <div class="sparkle sparkle-two" aria-hidden="true">✧</div>
+            <p class="panel-label">Địa chỉ server</p>
+            <p class="panel-ip"><strong id="server-ip">mc.elysibloomct.qzz.io</strong></p>
+            <ul class="panel-meta">
+              <li>Java Edition</li>
+              <li>Miễn phí</li>
+              <li>Cộng đồng thân thiện</li>
+            </ul>
             <p class="hero-badge">♡ PLAY • BUILD • BLOOM ♡</p>
           </div>
         </div>
