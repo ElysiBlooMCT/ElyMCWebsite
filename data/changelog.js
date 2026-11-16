@@ -18,7 +18,6 @@
   Nếu gõ thiếu dấu, mục Changelog sẽ tạm ẩn cho đến khi sửa lại (các mục khác vẫn bình thường).
 */
 SITE.changelog = {
-  nav: "Changelog",
   title: "Changelog",
   entries: [
     {

@@ -4,7 +4,6 @@
   (Discord, Facebook, TikTok...). Link bắt đầu bằng https:// sẽ tự mở ở tab mới.
 */
 SITE.community = {
-  nav: "Cộng đồng",
   title: "Cộng đồng & liên hệ",
   columns: 3,
   items: [

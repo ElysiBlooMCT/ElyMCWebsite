@@ -4,7 +4,6 @@
   Trong câu trả lời có thể gõ {ip} và {port}.
 */
 SITE.faq = {
-  nav: "FAQ",
   title: "FAQ nhanh",
   items: [
     {

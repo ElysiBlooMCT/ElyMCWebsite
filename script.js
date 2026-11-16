@@ -1,22 +1,45 @@
 /* =====================================================================
    BỘ DỰNG TRANG
-   Mỗi mục trên trang là một "module": một <section data-module="tên">
-   trong index.html và một file nội dung data/tên.js.
+   Website gồm nhiều trang: trang chủ (/) và mỗi mục một thư mục riêng
+   (/rules/, /join/, ...). Mỗi trang chỉ cần khai báo các module nó dùng:
+       <section data-module="rules"></section>
+   script.js tự nạp data/site.js và data/<module>.js rồi dựng nội dung,
+   cùng header (logo + menu) và footer dùng chung.
    Sửa file trong data/ là trang tự đổi, không cần động vào HTML.
    ===================================================================== */
-const SITE_DATA = window.SITE || {};
-// Thông tin server từ data/site.js. Nếu file đó lỗi thì dùng tạm IP/port đang ghi sẵn trong thẻ IP của index.html.
-const SERVER = {
-  ip: document.getElementById("server-ip")?.textContent.trim(),
-  bedrockPort: document.getElementById("bedrock-port")?.textContent.trim(),
-  ...SITE_DATA.server,
-};
+
+// Thư mục chứa script.js = gốc của website ("/" hoặc "/tên-repo/")
+const ROOT = (() => {
+  const src = document.currentScript && document.currentScript.src;
+  return src ? new URL(".", src).pathname : "/";
+})();
+
+window.SITE = window.SITE || {};
+const SITE_DATA = window.SITE;
+let SERVER = {}; // thông tin server từ data/site.js, gán sau khi nạp xong
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
   if (text !== undefined) node.textContent = text;
   return node;
+}
+
+// Link nội bộ viết dạng "/rules/" sẽ được gắn thêm thư mục gốc; link ngoài hoặc "#" giữ nguyên
+function siteUrl(path) {
+  if (typeof path === "string" && path.startsWith("/") && !path.startsWith("//")) {
+    return ROOT + path.slice(1);
+  }
+  return path;
+}
+
+function loadData(name) {
+  return new Promise((resolve) => {
+    const script = document.createElement("script");
+    script.src = `${ROOT}data/${name}.js`;
+    script.onload = script.onerror = () => resolve();
+    document.head.append(script);
+  });
 }
 
 // Thay {ip}, {port}, {name} bằng giá trị trong data/site.js
@@ -41,8 +64,8 @@ function richText(parent, value) {
 function linkButton(button) {
   const style = button.style === "secondary" ? "secondary" : "primary";
   const link = el("a", `btn btn-${style}`, button.label || "Xem thêm");
-  link.href = button.url || "#";
-  if (/^https?:\/\//i.test(link.getAttribute("href"))) {
+  link.href = siteUrl(button.url || "#");
+  if (/^https?:\/\//i.test(String(button.url || ""))) {
     link.target = "_blank";
     link.rel = "noopener noreferrer";
   }
@@ -65,7 +88,7 @@ function renderAbout(data) {
   return fragment;
 }
 
-// Dùng chung cho Chế độ chơi, Ủng hộ & Vote, Cộng đồng
+// Dùng chung cho Trang chủ, Chế độ chơi, Ủng hộ & Vote, Cộng đồng
 function renderCards(data) {
   const grid = el("div", data.columns === 2 ? "card-grid card-grid-2" : "card-grid");
   (data.items || []).forEach((item) => {
@@ -135,7 +158,7 @@ function renderTeam(data) {
     const hint = member.avatar || "";
     if (/[./]/.test(hint)) {
       const image = el("img");
-      image.src = hint;
+      image.src = siteUrl(hint.startsWith("http") || hint.startsWith("/") ? hint : `/${hint}`);
       image.alt = "";
       avatar.append(image);
     } else {
@@ -187,8 +210,9 @@ function renderFaq(data) {
   return wrap;
 }
 
-// Tên module (khớp data-module trong index.html và file data/tên.js) -> hàm dựng
+// Tên module (khớp data-module trong HTML và file data/tên.js) -> hàm dựng
 const MODULE_RENDERERS = {
+  home: renderCards,
   about: renderAbout,
   modes: renderCards,
   features: renderFeatures,
@@ -202,9 +226,73 @@ const MODULE_RENDERERS = {
   faq: renderFaq,
 };
 
-function buildModules() {
-  const navLinks = document.getElementById("nav-links");
+// Trang hiện tại so với thư mục gốc: "" (trang chủ), "rules", "join"...
+function currentSlug() {
+  const path = location.pathname;
+  const relative = path.startsWith(ROOT) ? path.slice(ROOT.length) : path.replace(/^\//, "");
+  return relative.replace(/index\.html$/, "").replace(/\/+$/, "");
+}
 
+const slugOf = (url) => String(url || "").replace(/^\/+|\/+$/g, "");
+
+// Link cũ dạng /#rules trên trang chủ -> chuyển sang /rules/
+function redirectLegacyHash() {
+  const legacy = location.hash.slice(1);
+  if (!legacy || currentSlug() !== "") return false;
+  const alias = { features: "about", stats: "about" };
+  const target = alias[legacy] || legacy;
+  const hit = (SITE_DATA.nav || []).find((item) => slugOf(item.url) === target);
+  if (!hit) return false;
+  location.replace(siteUrl(hit.url));
+  return true;
+}
+
+// Header (logo + menu) và footer dùng chung cho mọi trang
+function renderShell() {
+  const name = SERVER.name || "ElysiBlooMCT";
+
+  const header = document.querySelector(".site-header");
+  if (header) {
+    const wrap = el("div", "container nav-wrap");
+    const brand = el("a", "brand");
+    brand.href = ROOT;
+    brand.setAttribute("aria-label", `${name} trang chủ`);
+    const logo = el("img", "brand-logo");
+    logo.src = `${ROOT}logo.png`;
+    logo.width = 960;
+    logo.height = 181;
+    logo.alt = name;
+    brand.append(logo);
+
+    const nav = el("nav");
+    nav.setAttribute("aria-label", "Điều hướng chính");
+    const list = el("ul", "nav-links");
+    const here = currentSlug();
+    (SITE_DATA.nav || []).forEach((item) => {
+      const li = el("li");
+      const link = el("a", "", item.label || "");
+      link.href = siteUrl(item.url || "/");
+      if (slugOf(item.url) && slugOf(item.url) === here) link.setAttribute("aria-current", "page");
+      li.append(link);
+      list.append(li);
+    });
+    nav.append(list);
+    wrap.append(brand, nav);
+    header.append(wrap);
+  }
+
+  const footer = document.querySelector(".site-footer");
+  if (footer) {
+    const wrap = el("div", "container footer-wrap");
+    wrap.append(el("p", "", `© ${new Date().getFullYear()} ${name}. Crafted with pink magic.`));
+    const top = el("a", "", "Lên đầu trang");
+    top.href = "#top";
+    wrap.append(top);
+    footer.append(wrap);
+  }
+}
+
+function buildModules() {
   document.querySelectorAll("[data-module]").forEach((section) => {
     const name = section.dataset.module;
     const data = SITE_DATA[name];
@@ -219,7 +307,7 @@ function buildModules() {
     try {
       const container = el("div", "container");
       if (data.title) {
-        const heading = el("h2", "", fill(data.title));
+        const heading = el(section.dataset.heading === "h1" ? "h1" : "h2", "section-title", fill(data.title));
         heading.id = `${name}-title`;
         container.append(heading);
         section.setAttribute("aria-labelledby", heading.id);
@@ -227,14 +315,6 @@ function buildModules() {
       container.append(render(data));
       section.id = name;
       section.append(container);
-
-      if (data.nav && navLinks) {
-        const item = el("li");
-        const link = el("a", "", data.nav);
-        link.href = `#${name}`;
-        item.append(link);
-        navLinks.append(item);
-      }
     } catch (error) {
       section.hidden = true;
       section.replaceChildren();
@@ -243,7 +323,7 @@ function buildModules() {
   });
 }
 
-// Thẻ IP ở đầu trang lấy dữ liệu từ data/site.js
+// Thẻ IP ở trang chủ lấy dữ liệu từ data/site.js
 function fillHero() {
   const ip = document.getElementById("server-ip");
   if (ip && SERVER.ip) ip.textContent = SERVER.ip;
@@ -257,112 +337,123 @@ function fillHero() {
   }
 }
 
-fillHero();
-buildModules();
-
-/* ===================================================================== */
-
-const copyButton = document.getElementById("copy-ip-btn");
-const copyStatus = document.getElementById("copy-status");
-const serverIpNode = document.getElementById("server-ip");
-const yearNode = document.getElementById("year");
-
-async function copyServerIp() {
+function initCopyButton() {
+  const copyButton = document.getElementById("copy-ip-btn");
+  const copyStatus = document.getElementById("copy-status");
+  const serverIpNode = document.getElementById("server-ip");
   if (!copyButton || !copyStatus || !serverIpNode) return;
 
-  const ip = serverIpNode.textContent?.trim() || "";
+  copyButton.addEventListener("click", async () => {
+    const ip = serverIpNode.textContent?.trim() || "";
 
-  if (!ip) {
-    copyStatus.textContent = "Không tìm thấy IP.";
-    return;
-  }
-
-  try {
-    await navigator.clipboard.writeText(ip);
-    copyStatus.textContent = "Đã copy IP!";
-  } catch {
-    const tempInput = document.createElement("input");
-    tempInput.value = ip;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    tempInput.remove();
-    copyStatus.textContent = "Đã copy IP!";
-  }
-
-  window.setTimeout(() => {
-    copyStatus.textContent = "";
-  }, 2200);
-}
-
-if (copyButton) {
-  copyButton.addEventListener("click", copyServerIp);
-}
-
-if (yearNode) {
-  yearNode.textContent = String(new Date().getFullYear());
-}
-
-const revealNodes = document.querySelectorAll(".section, .site-footer");
-const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-let revealObserver = null;
-
-function disableRevealAnimation() {
-  if (revealObserver) {
-    revealObserver.disconnect();
-    revealObserver = null;
-  }
-
-  revealNodes.forEach((node) => {
-    node.classList.remove("scroll-reveal");
-    node.classList.add("is-visible");
-  });
-}
-
-function enableRevealAnimation() {
-  if (!("IntersectionObserver" in window)) {
-    disableRevealAnimation();
-    return;
-  }
-
-  if (revealObserver) {
-    revealObserver.disconnect();
-  }
-
-  revealObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      });
-    },
-    {
-      threshold: 0.12,
-      rootMargin: "0px 0px -30px",
+    if (!ip) {
+      copyStatus.textContent = "Không tìm thấy IP.";
+      return;
     }
-  );
 
-  revealNodes.forEach((node) => {
-    node.classList.add("scroll-reveal");
-    node.classList.remove("is-visible");
-    revealObserver.observe(node);
+    try {
+      await navigator.clipboard.writeText(ip);
+      copyStatus.textContent = "Đã copy IP!";
+    } catch {
+      const tempInput = document.createElement("input");
+      tempInput.value = ip;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      tempInput.remove();
+      copyStatus.textContent = "Đã copy IP!";
+    }
+
+    window.setTimeout(() => {
+      copyStatus.textContent = "";
+    }, 2200);
   });
 }
 
-function syncRevealMotionPreference() {
-  if (reducedMotionQuery.matches) {
-    disableRevealAnimation();
-    return;
+function initRevealAnimation() {
+  const revealNodes = document.querySelectorAll(".section, .site-footer");
+  const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let revealObserver = null;
+
+  function disableRevealAnimation() {
+    if (revealObserver) {
+      revealObserver.disconnect();
+      revealObserver = null;
+    }
+
+    revealNodes.forEach((node) => {
+      node.classList.remove("scroll-reveal");
+      node.classList.add("is-visible");
+    });
   }
 
-  enableRevealAnimation();
+  function enableRevealAnimation() {
+    if (!("IntersectionObserver" in window)) {
+      disableRevealAnimation();
+      return;
+    }
+
+    if (revealObserver) {
+      revealObserver.disconnect();
+    }
+
+    revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -30px",
+      }
+    );
+
+    revealNodes.forEach((node) => {
+      node.classList.add("scroll-reveal");
+      node.classList.remove("is-visible");
+      revealObserver.observe(node);
+    });
+  }
+
+  function syncRevealMotionPreference() {
+    if (reducedMotionQuery.matches) {
+      disableRevealAnimation();
+      return;
+    }
+
+    enableRevealAnimation();
+  }
+
+  syncRevealMotionPreference();
+
+  if (typeof reducedMotionQuery.addEventListener === "function") {
+    reducedMotionQuery.addEventListener("change", syncRevealMotionPreference);
+  } else if (typeof reducedMotionQuery.addListener === "function") {
+    reducedMotionQuery.addListener(syncRevealMotionPreference);
+  }
 }
 
-syncRevealMotionPreference();
+async function main() {
+  const modules = [...document.querySelectorAll("[data-module]")].map((node) => node.dataset.module);
+  await Promise.all([...new Set(["site", ...modules])].map(loadData));
 
-if (typeof reducedMotionQuery.addEventListener === "function") {
-  reducedMotionQuery.addEventListener("change", syncRevealMotionPreference);
-} else if (typeof reducedMotionQuery.addListener === "function") {
-  reducedMotionQuery.addListener(syncRevealMotionPreference);
+  // Nếu data/site.js lỗi, dùng tạm IP/port đang ghi sẵn trong thẻ IP ở trang chủ
+  SERVER = {
+    ip: document.getElementById("server-ip")?.textContent.trim(),
+    bedrockPort: document.getElementById("bedrock-port")?.textContent.trim(),
+    ...SITE_DATA.server,
+  };
+
+  if (redirectLegacyHash()) return;
+
+  renderShell();
+  fillHero();
+  buildModules();
+  initCopyButton();
+  initRevealAnimation();
 }
+
+main();

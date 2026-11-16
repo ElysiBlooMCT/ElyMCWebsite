@@ -14,29 +14,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Pixelify+Sans:wght@500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Bỏ qua đến nội dung chính</a>
-    <header class="site-header" id="top">
-      <div class="container nav-wrap">
-        <a href="#top" class="brand" aria-label="ElysiBlooMCT trang chủ">
-          <img
-            class="brand-logo"
-            src="./logo.png"
-            width="960"
-            height="181"
-            alt="ElysiBlooMCT"
-          />
-        </a>
-        <nav aria-label="Điều hướng chính">
-          <!-- Menu tự sinh từ các module có dòng nav trong thư mục data/ -->
-          <ul class="nav-links" id="nav-links"></ul>
-        </nav>
-      </div>
-    </header>
+    <!-- Header (logo + menu) và footer được script.js dựng chung cho mọi trang; menu sửa trong data/site.js -->
+    <header class="site-header" id="top"></header>
 
     <main id="main-content">
       <section class="hero" aria-labelledby="hero-title">
@@ -50,7 +35,7 @@
               đầu chuyến phiêu lưu của bạn ngay hôm nay.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#join">Chơi ngay</a>
+              <a class="btn btn-primary" href="./join/">Chơi ngay</a>
               <button class="btn btn-secondary" id="copy-ip-btn" type="button">
                 Copy IP server
               </button>
@@ -76,51 +61,12 @@
         </div>
       </section>
 
-      <noscript>
-        <p class="container note">Trang cần bật JavaScript để hiển thị nội dung.</p>
-      </noscript>
-
-      <!--
-        Mỗi <section data-module="tên"> là một module, nội dung nằm trong data/tên.js.
-        Thứ tự các section ở đây là thứ tự hiển thị trên trang (và trên menu).
-        Muốn ẩn một mục: xóa hoặc đổi tên file data tương ứng.
-      -->
-      <section class="section" data-module="about"></section>
-      <section class="section" data-module="modes"></section>
-      <section class="section" data-module="features"></section>
-      <section class="section" data-module="stats"></section>
-      <section class="section" data-module="join"></section>
-      <section class="section" data-module="rules"></section>
-      <section class="section" data-module="team"></section>
-      <section class="section" data-module="changelog"></section>
-      <section class="section" data-module="support"></section>
-      <section class="section" data-module="community"></section>
-      <section class="section" data-module="faq"></section>
+      <!-- Mỗi <section data-module="tên"> là một module, nội dung nằm trong data/tên.js -->
+      <section class="section" data-module="home"></section>
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-wrap">
-        <p>© <span id="year"></span> ElysiBlooMCT. Crafted with pink magic.</p>
-        <a href="#top">Lên đầu trang</a>
-      </div>
-    </footer>
+    <footer class="site-footer"></footer>
 
-    <!-- Dữ liệu từng module: mỗi file độc lập, file nào lỗi thì chỉ mục đó bị ẩn -->
-    <script>
-      window.SITE = {};
-    </script>
-    <script src="./data/site.js"></script>
-    <script src="./data/about.js"></script>
-    <script src="./data/modes.js"></script>
-    <script src="./data/features.js"></script>
-    <script src="./data/stats.js"></script>
-    <script src="./data/join.js"></script>
-    <script src="./data/rules.js"></script>
-    <script src="./data/team.js"></script>
-    <script src="./data/changelog.js"></script>
-    <script src="./data/support.js"></script>
-    <script src="./data/community.js"></script>
-    <script src="./data/faq.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

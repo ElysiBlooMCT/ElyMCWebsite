@@ -5,7 +5,6 @@
   - columns: số cột (2 hoặc 3)
 */
 SITE.modes = {
-  nav: "Chế độ chơi",
   title: "Chế độ chơi",
   columns: 3,
   items: [

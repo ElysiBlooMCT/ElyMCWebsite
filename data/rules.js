@@ -4,7 +4,6 @@
   note: dòng ghi chú về mức xử lý bên dưới (xóa dòng note nếu không cần).
 */
 SITE.rules = {
-  nav: "Luật",
   title: "Luật server",
   items: [
     "Tôn trọng mọi người: không xúc phạm, kỳ thị hay spam trong chat.",

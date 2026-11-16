@@ -5,7 +5,6 @@
   Bọc chữ trong **hai dấu sao** để in đậm.
 */
 SITE.join = {
-  nav: "Tham gia",
   title: "Hướng dẫn tham gia",
   platforms: [
     {
