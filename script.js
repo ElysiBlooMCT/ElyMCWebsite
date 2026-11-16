@@ -14,6 +14,12 @@ const ROOT = (() => {
   return src ? new URL(".", src).pathname : "/";
 })();
 
+// Số phiên bản lấy từ "script.js?v=..." trong HTML, dùng chung cho các file data để điện thoại không giữ bản cũ
+const ASSET_V = (() => {
+  const src = document.currentScript && document.currentScript.src;
+  return src ? new URL(src).searchParams.get("v") || "" : "";
+})();
+
 window.SITE = window.SITE || {};
 const SITE_DATA = window.SITE;
 let SERVER = {}; // thông tin server từ data/site.js, gán sau khi nạp xong
@@ -36,7 +42,7 @@ function siteUrl(path) {
 function loadData(name) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
-    script.src = `${ROOT}data/${name}.js`;
+    script.src = `${ROOT}data/${name}.js${ASSET_V ? "?v=" + ASSET_V : ""}`;
     script.onload = script.onerror = () => resolve();
     document.head.append(script);
   });
