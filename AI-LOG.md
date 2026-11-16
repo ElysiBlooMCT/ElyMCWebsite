@@ -12,6 +12,13 @@ Mẫu:
 
 ---
 
+## 2026-11-16 | Claude (lần 3)
+- Đã làm: tách giao diện điện thoại thành module riêng `mobile.css` + `mobile.js`; trên màn ≤900px menu thành nút ba gạch xổ xuống (kiểu Faithful), giao diện máy tính giữ nguyên; thêm logo nhỏ vào chân trang (bật/tắt bằng `logo` trong `data/footer.js`); cập nhật số phiên bản `?v=20261116c`.
+- File đã sửa: `styles.css` (bỏ phần media điện thoại), `mobile.css`, `mobile.js`, `script.js`, `data/footer.js`, tất cả `*.html`, `README.md`, `AGENTS.md`.
+- Còn dang dở: như mục bên dưới.
+
+---
+
 ## 2026-11-16 | Claude
 - Đã làm: sửa giao diện điện thoại (menu tự xuống dòng, nút cao ≥40px, tắt hiệu ứng lấp lánh trên màn nhỏ); thêm số phiên bản `?v=` cho CSS/JS/data để tránh kẹt cache; cố định chân trang sát đáy; chân trang thành module `data/footer.js`; thêm `AGENTS.md`, `CLAUDE.md`, `.github/copilot-instructions.md` và file log này.
 - File đã sửa: `styles.css`, `script.js`, tất cả `*.html`, `data/footer.js`, `AGENTS.md`, `CLAUDE.md`, `AI-LOG.md`, `.github/copilot-instructions.md`, `README.md`.

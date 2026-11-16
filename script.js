@@ -39,13 +39,17 @@ function siteUrl(path) {
   return path;
 }
 
-function loadData(name) {
+function loadScriptFile(path) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
-    script.src = `${ROOT}data/${name}.js${ASSET_V ? "?v=" + ASSET_V : ""}`;
+    script.src = `${ROOT}${path}${ASSET_V ? "?v=" + ASSET_V : ""}`;
     script.onload = script.onerror = () => resolve();
     document.head.append(script);
   });
+}
+
+function loadData(name) {
+  return loadScriptFile(`data/${name}.js`);
 }
 
 // Thay {ip}, {port}, {name} bằng giá trị trong data/site.js
@@ -291,8 +295,18 @@ function renderShell() {
   if (footer) {
     const conf = SITE_DATA.footer || {};
     const wrap = el("div", "container footer-wrap");
+    const brandBox = el("div", "footer-brand");
+    if (conf.logo !== false) {
+      const flogo = el("img", "footer-logo");
+      flogo.src = `${ROOT}logo.png`;
+      flogo.width = 960;
+      flogo.height = 181;
+      flogo.alt = name;
+      brandBox.append(flogo);
+    }
     const text = conf.text || "© {year} {name}.";
-    wrap.append(el("p", "", fill(text).replace(/\{year\}/g, String(new Date().getFullYear()))));
+    brandBox.append(el("p", "", fill(text).replace(/\{year\}/g, String(new Date().getFullYear()))));
+    wrap.append(brandBox);
     const links = el("nav", "footer-links");
     links.setAttribute("aria-label", "Liên kết chân trang");
     (Array.isArray(conf.links) ? conf.links : []).forEach((item) => {
@@ -473,6 +487,7 @@ async function main() {
   if (redirectLegacyHash()) return;
 
   renderShell();
+  loadScriptFile("mobile.js"); // menu ba gạch cho điện thoại (module riêng)
   fillHero();
   buildModules();
   initCopyButton();

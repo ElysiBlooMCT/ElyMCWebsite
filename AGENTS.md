@@ -22,9 +22,11 @@
 - Phải dùng tốt trên điện thoại (kiểm tra ở rộng 360px): không tràn ngang, nút bấm cao tối thiểu 40px, menu không bị cắt.
 - Chân trang phải luôn nằm sát đáy màn hình kể cả khi nội dung ngắn (body là flex column, `main` có `flex: 1 0 auto`). Đừng phá điều này.
 
+- **Điện thoại là module riêng**: `mobile.css` (chỉ có tác dụng khi màn ≤900px) và `mobile.js` (nút menu ba gạch). Sửa giao diện điện thoại ở đó; đừng thêm rule điện thoại vào `styles.css`. Giao diện máy tính (`styles.css`) giữ nguyên trừ khi chủ web yêu cầu.
+
 ## Khi sửa CSS / JS
 
-- Mỗi lần sửa `styles.css` hoặc `script.js`, **đổi số phiên bản `?v=...`** trong mọi file `.html` (kể cả `404.html`) để điện thoại không giữ bản cũ. Ví dụ `styles.css?v=20261116b` đổi thành `?v=20261117a`. Mẹo: tìm `?v=` trong repo rồi thay đồng loạt.
+- Mỗi lần sửa `styles.css` hoặc `script.js`, **đổi số phiên bản `?v=...`** trong mọi file `.html` (kể cả `404.html`) để điện thoại không giữ bản cũ. Ví dụ `styles.css?v=20261116c` đổi thành `?v=20261117a`. Mẹo: tìm `?v=` trong repo rồi thay đồng loạt.
 - Không dùng `innerHTML` với nội dung từ data (dùng `textContent`/hàm `el()` có sẵn).
 - Gõ sai data (thiếu dấu phẩy, dấu nháy) thì chỉ module đó bị ẩn; kiểm tra Console của trình duyệt.
 
