@@ -38,6 +38,10 @@
 * { box-sizing: border-box; }
 
 html, body { margin: 0; padding: 0; min-height: 100%; }
+/* Chân trang luôn nằm sát đáy màn hình dù nội dung ngắn */
+body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+main { flex: 1 0 auto; }
+.site-header, .site-footer { flex: none; }
 html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 
 body {
@@ -193,9 +197,10 @@ details p { margin: 0.6rem 0 0; }
 .scroll-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
 .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-.site-footer { margin-top: 1.5rem; padding: 1.2rem 0 1.8rem; border-top: 2px solid var(--wine); color: var(--muted); }
+.site-footer { margin-top: auto; padding: 1.2rem 0 1.8rem; border-top: 2px solid var(--wine); color: var(--muted); }
 .footer-wrap { display: flex; flex-wrap: wrap; gap: 0.65rem; justify-content: space-between; align-items: center; }
 .footer-wrap p { margin: 0; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; }
 :focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
 
 @keyframes twinkle { 0%, 100% { opacity: 0.5; transform: scale(0.9) rotate(0deg); } 50% { opacity: 1; transform: scale(1.15) rotate(12deg); } }

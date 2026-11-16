@@ -289,11 +289,28 @@ function renderShell() {
 
   const footer = document.querySelector(".site-footer");
   if (footer) {
+    const conf = SITE_DATA.footer || {};
     const wrap = el("div", "container footer-wrap");
-    wrap.append(el("p", "", `© ${new Date().getFullYear()} ${name}. Crafted with pink magic.`));
-    const top = el("a", "", "Lên đầu trang");
-    top.href = "#top";
-    wrap.append(top);
+    const text = conf.text || "© {year} {name}.";
+    wrap.append(el("p", "", fill(text).replace(/\{year\}/g, String(new Date().getFullYear()))));
+    const links = el("nav", "footer-links");
+    links.setAttribute("aria-label", "Liên kết chân trang");
+    (Array.isArray(conf.links) ? conf.links : []).forEach((item) => {
+      if (!item || !item.label) return;
+      const a = el("a", "", item.label);
+      a.href = siteUrl(item.url || "#");
+      if (/^https?:\/\//.test(a.getAttribute("href"))) {
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+      }
+      links.append(a);
+    });
+    if (conf.backToTop !== false) {
+      const top = el("a", "", "Lên đầu trang");
+      top.href = "#top";
+      links.append(top);
+    }
+    wrap.append(links);
     footer.append(wrap);
   }
 }
@@ -444,7 +461,7 @@ function initRevealAnimation() {
 
 async function main() {
   const modules = [...document.querySelectorAll("[data-module]")].map((node) => node.dataset.module);
-  await Promise.all([...new Set(["site", ...modules])].map(loadData));
+  await Promise.all([...new Set(["site", "footer", ...modules])].map(loadData));
 
   // Nếu data/site.js lỗi, dùng tạm IP/port đang ghi sẵn trong thẻ IP ở trang chủ
   SERVER = {

@@ -57,6 +57,14 @@ Hướng dẫn cách viết nằm ngay đầu mỗi file. Vài điều chung:
 - Bọc chữ trong `**hai dấu sao**` để in đậm.
 - Gõ thiếu dấu nháy hoặc dấu phẩy thì mục đó tạm ẩn (các mục khác vẫn bình thường), xem lỗi ở Console của trình duyệt.
 
+### Chân trang
+
+Sửa `data/footer.js`: dòng chữ, các link nhỏ và nút "Lên đầu trang". Chân trang luôn nằm sát đáy màn hình dù trang ít nội dung.
+
+### Quy tắc cho AI / người sửa hộ
+
+Xem `AGENTS.md`. Mỗi lần sửa phải ghi vào `AI-LOG.md`. Khi nhờ AI khác sửa, bảo nó "đọc AGENTS.md trước".
+
 ### Viết Changelog
 
 Mở `data/changelog.js`, copy một khối `{ version: ..., changes: [...] }` dán lên đầu danh sách `entries`, rồi sửa. Mỗi thay đổi là một dòng `["loại", "nội dung"],` với loại là `new`, `fix`, `balance`, `change` hoặc `remove`.
