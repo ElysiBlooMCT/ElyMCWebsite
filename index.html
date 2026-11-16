@@ -32,15 +32,8 @@
           />
         </a>
         <nav aria-label="Điều hướng chính">
-          <ul class="nav-links">
-            <li><a href="#about">Giới thiệu</a></li>
-            <li><a href="#modes">Chế độ chơi</a></li>
-            <li><a href="#join">Tham gia</a></li>
-            <li><a href="#rules">Luật</a></li>
-            <li><a href="#changelog">Changelog</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#community">Cộng đồng</a></li>
-          </ul>
+          <!-- Menu tự sinh từ các module có dòng nav trong thư mục data/ -->
+          <ul class="nav-links" id="nav-links"></ul>
         </nav>
       </div>
     </header>
@@ -70,6 +63,7 @@
             <div class="sparkle sparkle-one" aria-hidden="true">✦</div>
             <div class="sparkle sparkle-two" aria-hidden="true">✧</div>
             <p class="panel-label">Địa chỉ server</p>
+            <!-- IP, port và nhãn nhỏ được lấy từ data/site.js -->
             <p class="panel-ip"><strong id="server-ip">mc.elysibloomct.qzz.io</strong></p>
             <p class="panel-port">Bedrock / PE: port <strong id="bedrock-port">36918</strong></p>
             <ul class="panel-meta">
@@ -82,255 +76,26 @@
         </div>
       </section>
 
-      <section class="section" id="about" aria-labelledby="about-title">
-        <div class="container">
-          <h2 id="about-title">Giới thiệu server</h2>
-          <p>
-            ElysiBlooMCT là không gian mở cho người chơi mới lẫn kỳ cựu. Server
-            tập trung vào trải nghiệm cộng đồng: xây cùng nhau, khám phá map,
-            và tạo nên những câu chuyện riêng theo phong cách của bạn.
-          </p>
-        </div>
-      </section>
+      <noscript>
+        <p class="container note">Trang cần bật JavaScript để hiển thị nội dung.</p>
+      </noscript>
 
-      <section class="section" id="modes" aria-labelledby="modes-title">
-        <div class="container">
-          <h2 id="modes-title">Chế độ chơi</h2>
-          <div class="card-grid">
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">♡</span>
-              <h3>Survival Co-op</h3>
-              <p>Sinh tồn, phát triển căn cứ và bảo vệ thành quả cùng bạn bè.</p>
-            </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">✦</span>
-              <h3>Skyblock</h3>
-              <p>Bắt đầu từ hòn đảo nhỏ, mở rộng tài nguyên và xây đế chế trên trời.</p>
-            </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">✧</span>
-              <h3>Mini Games</h3>
-              <p>Đua tốc độ, PvP vui vẻ, parkour và nhiều thử thách ngắn theo tuần.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="features-title">
-        <div class="container">
-          <h2 id="features-title">Tính năng nổi bật</h2>
-          <ul class="feature-list">
-            <li>Hệ thống anti-grief cơ bản giúp bảo vệ khu vực đã đăng ký.</li>
-            <li>Event cộng đồng định kỳ với phần thưởng trang trí độc đáo.</li>
-            <li>Kênh hỗ trợ tân thủ và hướng dẫn khởi đầu nhanh.</li>
-            <li>Bảng xếp hạng minh họa tiến trình và thành tích người chơi.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="stats-title">
-        <div class="container">
-          <h2 id="stats-title">Cộng đồng đang phát triển</h2>
-          <div class="card-grid stats-grid">
-            <article class="card stat">
-              <p class="stat-label">Không khí</p>
-              <p class="stat-value">Chill</p>
-            </article>
-            <article class="card stat">
-              <p class="stat-label">Tinh thần</p>
-              <p class="stat-value">Friendly</p>
-            </article>
-            <article class="card stat">
-              <p class="stat-label">Nền tảng</p>
-              <p class="stat-value">Java + PE</p>
-            </article>
-          </div>
-          <p class="note">Website đang được cập nhật để mang đến trải nghiệm ElysiBlooMCT tốt hơn.</p>
-        </div>
-      </section>
-
-      <section class="section" id="join" aria-labelledby="join-title">
-        <div class="container">
-          <h2 id="join-title">Hướng dẫn tham gia</h2>
-          <div class="join-grid">
-            <article class="join-card">
-              <h3>Java Edition</h3>
-              <ol class="steps">
-                <li>Mở Minecraft Java Edition phiên bản tương thích.</li>
-                <li>Chọn Multiplayer → Add Server.</li>
-                <li>Nhập tên tùy chọn và IP: <strong>mc.elysibloomct.qzz.io</strong>.</li>
-                <li>Bấm Join Server, hoàn tất xác thực trong game và bắt đầu chơi.</li>
-              </ol>
-            </article>
-            <article class="join-card">
-              <h3>Bedrock / PE (điện thoại, Windows)</h3>
-              <ol class="steps">
-                <li>Mở Minecraft Bedrock Edition (PE) phiên bản tương thích.</li>
-                <li>Chọn Play → Servers → Add Server.</li>
-                <li>
-                  Nhập tên tùy chọn, địa chỉ <strong>mc.elysibloomct.qzz.io</strong>
-                  và port <strong>36918</strong>.
-                </li>
-                <li>Lưu lại, chọn server vừa thêm và bấm Join.</li>
-              </ol>
-            </article>
-          </div>
-          <p class="note">Không vào được? Kiểm tra lại địa chỉ, port (Bedrock) và phiên bản game của bạn.</p>
-        </div>
-      </section>
-
-      <section class="section" id="rules" aria-labelledby="rules-title">
-        <div class="container">
-          <h2 id="rules-title">Luật server</h2>
-          <ol class="steps steps-grid">
-            <li>Tôn trọng mọi người: không xúc phạm, kỳ thị hay spam trong chat.</li>
-            <li>Không dùng hack, client gian lận hay lợi dụng lỗi game để trục lợi.</li>
-            <li>Không phá hoại (grief) hoặc lấy đồ của người khác khi chưa được phép.</li>
-            <li>Không quảng cáo server, kênh hay dịch vụ khác.</li>
-            <li>Hạn chế công trình, máy redstone hoặc farm gây lag cho cả server.</li>
-            <li>Nghe theo hướng dẫn của đội ngũ quản trị khi được nhắc nhở.</li>
-          </ol>
-          <p class="note">
-            Mức xử lý tùy theo mức độ vi phạm: nhắc nhở → mute/kick → ban tạm thời → ban vĩnh viễn.
-          </p>
-        </div>
-      </section>
-
-      <section class="section" id="team" aria-labelledby="team-title">
-        <div class="container">
-          <h2 id="team-title">Đội ngũ</h2>
-          <!-- TODO: thay tên và vai trò bằng đội ngũ thật của server -->
-          <div class="card-grid">
-            <article class="card member">
-              <span class="avatar" aria-hidden="true">O</span>
-              <h3>Tên_InGame</h3>
-              <p class="role">Owner</p>
-            </article>
-            <article class="card member">
-              <span class="avatar" aria-hidden="true">A</span>
-              <h3>Tên_InGame</h3>
-              <p class="role">Admin</p>
-            </article>
-            <article class="card member">
-              <span class="avatar" aria-hidden="true">M</span>
-              <h3>Tên_InGame</h3>
-              <p class="role">Moderator</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="changelog" aria-labelledby="changelog-title">
-        <div class="container">
-          <h2 id="changelog-title">Changelog</h2>
-          <!-- TODO: thay ngày và nội dung bằng các bản cập nhật thật. Thẻ: tag-new (Mới), tag-fix (Sửa lỗi), tag-balance (Cân bằng) -->
-          <ol class="changelog">
-            <li class="log-item">
-              <div class="log-head">
-                <span class="log-version">v1.1.0</span>
-                <span class="log-date">dd/mm/yyyy</span>
-              </div>
-              <ul class="log-list">
-                <li><span class="tag tag-new">Mới</span> Thêm hỗ trợ chơi trên Bedrock / PE.</li>
-                <li><span class="tag tag-fix">Sửa lỗi</span> Mô tả bản vá lỗi tại đây.</li>
-                <li><span class="tag tag-balance">Cân bằng</span> Mô tả điều chỉnh cân bằng tại đây.</li>
-              </ul>
-            </li>
-            <li class="log-item">
-              <div class="log-head">
-                <span class="log-version">v1.0.0</span>
-                <span class="log-date">dd/mm/yyyy</span>
-              </div>
-              <ul class="log-list">
-                <li><span class="tag tag-new">Mới</span> Khai trương ElysiBlooMCT.</li>
-              </ul>
-            </li>
-          </ol>
-        </div>
-      </section>
-
-      <section class="section" id="support" aria-labelledby="support-title">
-        <div class="container">
-          <h2 id="support-title">Ủng hộ &amp; Vote</h2>
-          <!-- TODO: thay href="#" bằng link ủng hộ / trang vote thật -->
-          <div class="card-grid card-grid-2">
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">♡</span>
-              <h3>Ủng hộ server</h3>
-              <p>Sự ủng hộ của bạn giúp server duy trì máy chủ và phát triển thêm nhiều tính năng mới.</p>
-              <div class="card-actions">
-                <a class="btn btn-primary" href="#">Ủng hộ ngay</a>
-              </div>
-            </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">✦</span>
-              <h3>Vote cho server</h3>
-              <p>Bình chọn cho ElysiBlooMCT để server được nhiều người chơi biết đến hơn.</p>
-              <div class="card-actions">
-                <a class="btn btn-primary" href="#">Vote ngay</a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="community" aria-labelledby="community-title">
-        <div class="container">
-          <h2 id="community-title">Cộng đồng &amp; liên hệ</h2>
-          <!-- TODO: thay href="#" bằng link Discord, Facebook, TikTok... thật -->
-          <div class="card-grid">
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">✦</span>
-              <h3>Discord</h3>
-              <p>Trò chuyện, tìm bạn chơi chung và nhận thông báo mới nhất từ server.</p>
-              <div class="card-actions">
-                <a class="btn btn-primary" href="#">Vào Discord</a>
-              </div>
-            </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">♡</span>
-              <h3>Mạng xã hội</h3>
-              <p>Theo dõi ElysiBlooMCT để xem video, hình ảnh và tin tức mới.</p>
-              <div class="card-actions">
-                <a class="btn btn-secondary" href="#">Facebook</a>
-                <a class="btn btn-secondary" href="#">TikTok</a>
-              </div>
-            </article>
-            <article class="card">
-              <span class="card-icon" aria-hidden="true">✧</span>
-              <h3>Liên hệ &amp; báo cáo</h3>
-              <p>Gặp lỗi hoặc người chơi vi phạm? Mở ticket trên Discord hoặc nhắn trực tiếp cho đội ngũ.</p>
-              <div class="card-actions">
-                <a class="btn btn-secondary" href="#">Gửi báo cáo</a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="faq" aria-labelledby="faq-title">
-        <div class="container">
-          <h2 id="faq-title">FAQ nhanh</h2>
-          <div class="faq-list">
-            <details>
-              <summary>Server có miễn phí tham gia không?</summary>
-              <p>Có. ElysiBlooMCT là server cộng đồng, miễn phí và ưu tiên trải nghiệm công bằng.</p>
-            </details>
-            <details>
-              <summary>Người mới có được hỗ trợ không?</summary>
-              <p>Có. Bạn có thể xem hướng dẫn nhanh trong game hoặc hỏi đội ngũ mod.</p>
-            </details>
-            <details>
-              <summary>Chơi bằng điện thoại (PE) được không?</summary>
-              <p>Được. Dùng Minecraft Bedrock, nhập địa chỉ server và port 36918 như hướng dẫn ở mục Tham gia.</p>
-            </details>
-            <details>
-              <summary>Có thể chơi cùng bạn trên nhiều khu vực không?</summary>
-              <p>Có, miễn là mọi người dùng đúng phiên bản và IP server.</p>
-            </details>
-          </div>
-        </div>
-      </section>
+      <!--
+        Mỗi <section data-module="tên"> là một module, nội dung nằm trong data/tên.js.
+        Thứ tự các section ở đây là thứ tự hiển thị trên trang (và trên menu).
+        Muốn ẩn một mục: xóa hoặc đổi tên file data tương ứng.
+      -->
+      <section class="section" data-module="about"></section>
+      <section class="section" data-module="modes"></section>
+      <section class="section" data-module="features"></section>
+      <section class="section" data-module="stats"></section>
+      <section class="section" data-module="join"></section>
+      <section class="section" data-module="rules"></section>
+      <section class="section" data-module="team"></section>
+      <section class="section" data-module="changelog"></section>
+      <section class="section" data-module="support"></section>
+      <section class="section" data-module="community"></section>
+      <section class="section" data-module="faq"></section>
     </main>
 
     <footer class="site-footer">
@@ -340,6 +105,22 @@
       </div>
     </footer>
 
+    <!-- Dữ liệu từng module: mỗi file độc lập, file nào lỗi thì chỉ mục đó bị ẩn -->
+    <script>
+      window.SITE = {};
+    </script>
+    <script src="./data/site.js"></script>
+    <script src="./data/about.js"></script>
+    <script src="./data/modes.js"></script>
+    <script src="./data/features.js"></script>
+    <script src="./data/stats.js"></script>
+    <script src="./data/join.js"></script>
+    <script src="./data/rules.js"></script>
+    <script src="./data/team.js"></script>
+    <script src="./data/changelog.js"></script>
+    <script src="./data/support.js"></script>
+    <script src="./data/community.js"></script>
+    <script src="./data/faq.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
