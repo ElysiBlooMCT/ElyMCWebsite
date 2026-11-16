@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="ElysiBlooMCT - server Minecraft cộng đồng với thế giới sinh tồn, phiêu lưu và những sự kiện ngập tràn sắc hồng."
+      content="ElysiBlooMCT - server Minecraft cộng đồng (Java và Bedrock/PE) với thế giới sinh tồn, phiêu lưu và những sự kiện ngập tràn sắc hồng."
     />
     <meta name="theme-color" content="#12050c" />
     <meta name="color-scheme" content="dark" />
@@ -36,7 +36,10 @@
             <li><a href="#about">Giới thiệu</a></li>
             <li><a href="#modes">Chế độ chơi</a></li>
             <li><a href="#join">Tham gia</a></li>
+            <li><a href="#rules">Luật</a></li>
+            <li><a href="#changelog">Changelog</a></li>
             <li><a href="#faq">FAQ</a></li>
+            <li><a href="#community">Cộng đồng</a></li>
           </ul>
         </nav>
       </div>
@@ -68,10 +71,11 @@
             <div class="sparkle sparkle-two" aria-hidden="true">✧</div>
             <p class="panel-label">Địa chỉ server</p>
             <p class="panel-ip"><strong id="server-ip">mc.elysibloomct.qzz.io</strong></p>
+            <p class="panel-port">Bedrock / PE: port <strong id="bedrock-port">36918</strong></p>
             <ul class="panel-meta">
               <li>Java Edition</li>
+              <li>Bedrock / PE</li>
               <li>Miễn phí</li>
-              <li>Cộng đồng thân thiện</li>
             </ul>
             <p class="hero-badge">♡ PLAY • BUILD • BLOOM ♡</p>
           </div>
@@ -137,8 +141,8 @@
               <p class="stat-value">Friendly</p>
             </article>
             <article class="card stat">
-              <p class="stat-label">Phiên bản</p>
-              <p class="stat-value">Java</p>
+              <p class="stat-label">Nền tảng</p>
+              <p class="stat-value">Java + PE</p>
             </article>
           </div>
           <p class="note">Website đang được cập nhật để mang đến trải nghiệm ElysiBlooMCT tốt hơn.</p>
@@ -148,12 +152,159 @@
       <section class="section" id="join" aria-labelledby="join-title">
         <div class="container">
           <h2 id="join-title">Hướng dẫn tham gia</h2>
-          <ol class="steps">
-            <li>Mở Minecraft Java Edition phiên bản tương thích.</li>
-            <li>Chọn Multiplayer → Add Server.</li>
-            <li>Nhập tên tùy chọn và IP: <strong>mc.elysibloomct.qzz.io</strong>.</li>
-            <li>Bấm Join Server, hoàn tất xác thực trong game và bắt đầu chơi.</li>
+          <div class="join-grid">
+            <article class="join-card">
+              <h3>Java Edition</h3>
+              <ol class="steps">
+                <li>Mở Minecraft Java Edition phiên bản tương thích.</li>
+                <li>Chọn Multiplayer → Add Server.</li>
+                <li>Nhập tên tùy chọn và IP: <strong>mc.elysibloomct.qzz.io</strong>.</li>
+                <li>Bấm Join Server, hoàn tất xác thực trong game và bắt đầu chơi.</li>
+              </ol>
+            </article>
+            <article class="join-card">
+              <h3>Bedrock / PE (điện thoại, Windows)</h3>
+              <ol class="steps">
+                <li>Mở Minecraft Bedrock Edition (PE) phiên bản tương thích.</li>
+                <li>Chọn Play → Servers → Add Server.</li>
+                <li>
+                  Nhập tên tùy chọn, địa chỉ <strong>mc.elysibloomct.qzz.io</strong>
+                  và port <strong>36918</strong>.
+                </li>
+                <li>Lưu lại, chọn server vừa thêm và bấm Join.</li>
+              </ol>
+            </article>
+          </div>
+          <p class="note">Không vào được? Kiểm tra lại địa chỉ, port (Bedrock) và phiên bản game của bạn.</p>
+        </div>
+      </section>
+
+      <section class="section" id="rules" aria-labelledby="rules-title">
+        <div class="container">
+          <h2 id="rules-title">Luật server</h2>
+          <ol class="steps steps-grid">
+            <li>Tôn trọng mọi người: không xúc phạm, kỳ thị hay spam trong chat.</li>
+            <li>Không dùng hack, client gian lận hay lợi dụng lỗi game để trục lợi.</li>
+            <li>Không phá hoại (grief) hoặc lấy đồ của người khác khi chưa được phép.</li>
+            <li>Không quảng cáo server, kênh hay dịch vụ khác.</li>
+            <li>Hạn chế công trình, máy redstone hoặc farm gây lag cho cả server.</li>
+            <li>Nghe theo hướng dẫn của đội ngũ quản trị khi được nhắc nhở.</li>
           </ol>
+          <p class="note">
+            Mức xử lý tùy theo mức độ vi phạm: nhắc nhở → mute/kick → ban tạm thời → ban vĩnh viễn.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="team" aria-labelledby="team-title">
+        <div class="container">
+          <h2 id="team-title">Đội ngũ</h2>
+          <!-- TODO: thay tên và vai trò bằng đội ngũ thật của server -->
+          <div class="card-grid">
+            <article class="card member">
+              <span class="avatar" aria-hidden="true">O</span>
+              <h3>Tên_InGame</h3>
+              <p class="role">Owner</p>
+            </article>
+            <article class="card member">
+              <span class="avatar" aria-hidden="true">A</span>
+              <h3>Tên_InGame</h3>
+              <p class="role">Admin</p>
+            </article>
+            <article class="card member">
+              <span class="avatar" aria-hidden="true">M</span>
+              <h3>Tên_InGame</h3>
+              <p class="role">Moderator</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="changelog" aria-labelledby="changelog-title">
+        <div class="container">
+          <h2 id="changelog-title">Changelog</h2>
+          <!-- TODO: thay ngày và nội dung bằng các bản cập nhật thật. Thẻ: tag-new (Mới), tag-fix (Sửa lỗi), tag-balance (Cân bằng) -->
+          <ol class="changelog">
+            <li class="log-item">
+              <div class="log-head">
+                <span class="log-version">v1.1.0</span>
+                <span class="log-date">dd/mm/yyyy</span>
+              </div>
+              <ul class="log-list">
+                <li><span class="tag tag-new">Mới</span> Thêm hỗ trợ chơi trên Bedrock / PE.</li>
+                <li><span class="tag tag-fix">Sửa lỗi</span> Mô tả bản vá lỗi tại đây.</li>
+                <li><span class="tag tag-balance">Cân bằng</span> Mô tả điều chỉnh cân bằng tại đây.</li>
+              </ul>
+            </li>
+            <li class="log-item">
+              <div class="log-head">
+                <span class="log-version">v1.0.0</span>
+                <span class="log-date">dd/mm/yyyy</span>
+              </div>
+              <ul class="log-list">
+                <li><span class="tag tag-new">Mới</span> Khai trương ElysiBlooMCT.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="support" aria-labelledby="support-title">
+        <div class="container">
+          <h2 id="support-title">Ủng hộ &amp; Vote</h2>
+          <!-- TODO: thay href="#" bằng link ủng hộ / trang vote thật -->
+          <div class="card-grid card-grid-2">
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">♡</span>
+              <h3>Ủng hộ server</h3>
+              <p>Sự ủng hộ của bạn giúp server duy trì máy chủ và phát triển thêm nhiều tính năng mới.</p>
+              <div class="card-actions">
+                <a class="btn btn-primary" href="#">Ủng hộ ngay</a>
+              </div>
+            </article>
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">✦</span>
+              <h3>Vote cho server</h3>
+              <p>Bình chọn cho ElysiBlooMCT để server được nhiều người chơi biết đến hơn.</p>
+              <div class="card-actions">
+                <a class="btn btn-primary" href="#">Vote ngay</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="community" aria-labelledby="community-title">
+        <div class="container">
+          <h2 id="community-title">Cộng đồng &amp; liên hệ</h2>
+          <!-- TODO: thay href="#" bằng link Discord, Facebook, TikTok... thật -->
+          <div class="card-grid">
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">✦</span>
+              <h3>Discord</h3>
+              <p>Trò chuyện, tìm bạn chơi chung và nhận thông báo mới nhất từ server.</p>
+              <div class="card-actions">
+                <a class="btn btn-primary" href="#">Vào Discord</a>
+              </div>
+            </article>
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">♡</span>
+              <h3>Mạng xã hội</h3>
+              <p>Theo dõi ElysiBlooMCT để xem video, hình ảnh và tin tức mới.</p>
+              <div class="card-actions">
+                <a class="btn btn-secondary" href="#">Facebook</a>
+                <a class="btn btn-secondary" href="#">TikTok</a>
+              </div>
+            </article>
+            <article class="card">
+              <span class="card-icon" aria-hidden="true">✧</span>
+              <h3>Liên hệ &amp; báo cáo</h3>
+              <p>Gặp lỗi hoặc người chơi vi phạm? Mở ticket trên Discord hoặc nhắn trực tiếp cho đội ngũ.</p>
+              <div class="card-actions">
+                <a class="btn btn-secondary" href="#">Gửi báo cáo</a>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -168,6 +319,10 @@
             <details>
               <summary>Người mới có được hỗ trợ không?</summary>
               <p>Có. Bạn có thể xem hướng dẫn nhanh trong game hoặc hỏi đội ngũ mod.</p>
+            </details>
+            <details>
+              <summary>Chơi bằng điện thoại (PE) được không?</summary>
+              <p>Được. Dùng Minecraft Bedrock, nhập địa chỉ server và port 36918 như hướng dẫn ở mục Tham gia.</p>
             </details>
             <details>
               <summary>Có thể chơi cùng bạn trên nhiều khu vực không?</summary>
