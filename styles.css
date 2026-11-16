@@ -199,7 +199,10 @@ details p { margin: 0.6rem 0 0; }
 
 .site-footer { margin-top: auto; padding: 1.2rem 0 1.8rem; border-top: 2px solid var(--wine); color: var(--muted); }
 .footer-wrap { display: flex; flex-wrap: wrap; gap: 0.65rem; justify-content: space-between; align-items: center; }
+.footer-brand { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+.footer-logo { display: block; height: 30px; width: auto; opacity: 0.95; }
 .footer-wrap p { margin: 0; }
+.menu-toggle { display: none; } /* nút menu chỉ hiện trên điện thoại, xem mobile.css */
 .footer-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; }
 :focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
 
@@ -212,34 +215,6 @@ details p { margin: 0.6rem 0 0; }
   .btn-secondary:hover { box-shadow: 0 7px 0 var(--wine-deep); }
   .card:hover { transform: translateY(-3px); border-color: var(--hot); }
   .footer-wrap a:hover { text-decoration: underline; }
-}
-@media (max-width: 900px) {
-  .hero-grid, .card-grid, .card-grid-2, .join-grid, .steps-grid { grid-template-columns: 1fr; }
-  .hero { padding-top: 2.6rem; }
-  .nav-wrap { flex-direction: column; gap: 0.45rem; padding: 0.7rem 0 0.5rem; }
-  .nav-wrap > nav { max-width: 100%; }
-  /* Menu tự xuống dòng, luôn thấy đủ mục, không cần cuộn ngang */
-  .nav-links { flex-wrap: wrap; justify-content: center; max-width: 100%; gap: 0.25rem; }
-  .nav-links a { min-height: 40px; display: flex; align-items: center; }
-  .nav-wrap { gap: 0.2rem; }
-}
-@media (max-width: 640px) {
-  html { scroll-behavior: auto; scroll-padding-top: 0.5rem; }
-  .site-header { position: static; backdrop-filter: none; }
-  .brand { padding: 0.25rem 0; min-height: 44px; align-items: center; }
-  .brand-logo { height: 34px; }
-  .nav-links a { padding: 0.3rem 0.7rem; font-size: 0.9rem; }
-  .sparkle { display: none; }
-  .hero h1 { font-size: clamp(2.8rem, 13vw, 3.6rem); }
-  .hero-panel { padding-bottom: 1.6rem; }
-  .btn { min-height: 44px; }
-  summary { min-height: 44px; }
-  .site-footer a { display: inline-block; padding: 0.6rem 0; }
-  .hero { padding: 2rem 0 1.6rem; }
-  .hero-panel { padding: 1.6rem 1.1rem 3.2rem; }
-  .section { padding: 1.9rem 0; }
-  main > .section:first-child { padding-top: 2rem; }
-  .scroll-reveal { transform: translateY(12px); transition-duration: 0.4s; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

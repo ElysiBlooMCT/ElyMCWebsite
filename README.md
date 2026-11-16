@@ -82,6 +82,7 @@ Link cũ dạng `/#rules` trên trang chủ sẽ tự chuyển sang `/rules/`.
 
 ## Giao diện
 
+- `mobile.css` + `mobile.js`: giao diện điện thoại / máy tính bảng nhỏ (màn rộng ≤900px) là module riêng: menu ba gạch xổ xuống, chân trang xếp giữa. Giao diện máy tính nằm ở `styles.css` và không bị ảnh hưởng. Sửa kiểu điện thoại thì sửa hai file này.
 - `styles.css`: theme hồng/đỏ mận lấy màu từ logo (các biến màu nằm ở đầu file), layout responsive, hiệu ứng.
 - `fonts/`: font VT323 (giấy phép SIL OFL) tự host, có đủ ký tự tiếng Việt. Chữ thường dùng Nunito từ Google Fonts.
 - `script.js`: nạp `data/`, dựng header/footer/menu và các module, copy IP.
