@@ -1,6 +1,6 @@
 # ElysiBlooMCT
 
-Landing page giới thiệu server Minecraft chung (static website).
+Landing page giới thiệu server Minecraft ElysiBlooMCT (static website).
 
 ## Chạy local
 
@@ -20,9 +20,11 @@ Sau đó truy cập `http://localhost:8080`.
 
 Các nội dung chính nằm ở:
 
-- `index.html`: tên thương hiệu, mô tả, danh sách game modes, FAQ, hướng dẫn tham gia.
-- `styles.css`: màu sắc/theme, layout responsive, hiệu ứng.
+- `index.html`: tên thương hiệu, logo, mô tả, danh sách game modes, FAQ, hướng dẫn tham gia.
+- `styles.css`: theme hồng neon/tím mận lấy cảm hứng từ logo, layout responsive, hiệu ứng.
 - `script.js`: hành vi client-side (copy IP, năm footer).
+
+Địa chỉ server hiện tại là `mc.elysibloomct.qzz.io`.
 
 Để đổi IP server hiển thị và copy:
 
