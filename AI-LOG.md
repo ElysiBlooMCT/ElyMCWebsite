@@ -12,6 +12,13 @@ Mẫu:
 
 ---
 
+## 2026-11-17 | Claude (xoá chú thích)
+- Đã làm: xoá toàn bộ chú thích trong `assets/script.js`, `assets/mobile.js`, `assets/styles.css`, `assets/mobile.css` và các file `.html`; giữ nguyên chú thích hướng dẫn trong `assets/data/*.js`; thêm quy tắc "không chú thích trong code công khai" vào `AGENTS.md`; số phiên bản `?v=20261117c`. Code JS được định dạng lại, chức năng không đổi.
+- File đã sửa: `assets/script.js`, `assets/mobile.js`, `assets/styles.css`, `assets/mobile.css`, tất cả `*.html`, `AGENTS.md`, `AI-LOG.md`.
+- Còn dang dở: như các mục bên dưới.
+
+---
+
 ## 2026-11-17 | Claude (soát lại điện thoại)
 - Đã làm: sửa dòng "PLAY • BUILD • BLOOM" đè lên các nhãn trong thẻ IP trên điện thoại (chuyển sang xếp dưới cùng, `assets/mobile.css`); thêm `color-scheme: dark` và `<meta name="darkreader-lock">` để chế độ tối ép màu của trình duyệt (như Samsung Internet) không làm mờ nút "Chơi ngay"; sửa chú thích cũ trong `assets/script.js` nhắc đường dẫn `data/`; số phiên bản `?v=20261117b`. Soát cả 10 trang ở 360, 412, 768, 1024, 1440px: không tràn ngang, không lỗi JS, không chữ đè nhau.
 - File đã sửa: `assets/mobile.css`, `assets/styles.css`, `assets/script.js`, tất cả `*.html`, `AI-LOG.md`.

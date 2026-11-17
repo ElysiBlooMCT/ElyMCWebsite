@@ -31,6 +31,11 @@
 - Không dùng `innerHTML` với nội dung từ data (dùng `textContent`/hàm `el()` có sẵn).
 - Gõ sai data (thiếu dấu phẩy, dấu nháy) thì chỉ module đó bị ẩn; kiểm tra Console của trình duyệt.
 
+## Chú thích trong code
+
+- Code công khai (`assets/script.js`, `assets/mobile.js`, `assets/styles.css`, `assets/mobile.css`, các file `.html`) **cố ý không có chú thích**. Đừng thêm chú thích dài vào đó. Giải thích cách hoạt động viết vào `README.md` hoặc `AGENTS.md`.
+- Riêng `assets/data/*.js` giữ chú thích hướng dẫn sửa nội dung, vì đó là chỗ chủ web chỉnh trực tiếp.
+
 ## Quy trình
 
 - Không sửa trực tiếp `main` nếu có thể tạo nhánh; chủ web sẽ duyệt rồi mới merge.
