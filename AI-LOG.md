@@ -12,6 +12,13 @@ Mẫu:
 
 ---
 
+## 2026-11-17 | Claude (soát lại điện thoại)
+- Đã làm: sửa dòng "PLAY • BUILD • BLOOM" đè lên các nhãn trong thẻ IP trên điện thoại (chuyển sang xếp dưới cùng, `assets/mobile.css`); thêm `color-scheme: dark` và `<meta name="darkreader-lock">` để chế độ tối ép màu của trình duyệt (như Samsung Internet) không làm mờ nút "Chơi ngay"; sửa chú thích cũ trong `assets/script.js` nhắc đường dẫn `data/`; số phiên bản `?v=20261117b`. Soát cả 10 trang ở 360, 412, 768, 1024, 1440px: không tràn ngang, không lỗi JS, không chữ đè nhau.
+- File đã sửa: `assets/mobile.css`, `assets/styles.css`, `assets/script.js`, tất cả `*.html`, `AI-LOG.md`.
+- Còn dang dở: như các mục bên dưới.
+
+---
+
 ## 2026-11-17 | Claude
 - Đã làm: dời `styles.css`, `mobile.css`, `script.js`, `mobile.js`, `data/`, `fonts/`, `logo.png` vào thư mục `assets/` để thư mục gốc gọn (gõ `/script.js` giờ ra 404); `script.js` có thêm biến `ASSETS`; cập nhật đường dẫn trong mọi `*.html`, README, AGENTS; số phiên bản `?v=20261117a`. Thêm hướng dẫn Cloudflare trong README.
 - File đã sửa: tất cả `*.html`, `assets/script.js`, `README.md`, `AGENTS.md`, `AI-LOG.md`.

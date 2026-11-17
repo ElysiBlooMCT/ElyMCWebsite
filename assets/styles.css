@@ -37,6 +37,7 @@
 
 * { box-sizing: border-box; }
 
+html { color-scheme: dark; } /* báo trình duyệt đây là giao diện tối để không tự đảo màu */
 html, body { margin: 0; padding: 0; min-height: 100%; }
 /* Chân trang luôn nằm sát đáy màn hình dù nội dung ngắn */
 body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }

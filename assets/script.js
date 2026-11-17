@@ -3,12 +3,11 @@
    Website gồm nhiều trang: trang chủ (/) và mỗi mục một thư mục riêng
    (/rules/, /join/, ...). Mỗi trang chỉ cần khai báo các module nó dùng:
        <section data-module="rules"></section>
-   script.js tự nạp data/site.js và data/<module>.js rồi dựng nội dung,
+   script.js tự nạp assets/data/site.js và assets/data/<module>.js rồi dựng nội dung,
    cùng header (logo + menu) và footer dùng chung.
-   Sửa file trong data/ là trang tự đổi, không cần động vào HTML.
+   Sửa file trong assets/data/ là trang tự đổi, không cần động vào HTML.
    ===================================================================== */
 
-// Thư mục chứa script.js = gốc của website ("/" hoặc "/tên-repo/")
 // ASSETS = thư mục chứa script.js ("/assets/"); ROOT = gốc website, là thư mục cha của ASSETS
 const ASSETS = (() => {
   const src = document.currentScript && document.currentScript.src;
