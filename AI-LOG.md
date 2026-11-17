@@ -12,6 +12,13 @@ Mẫu:
 
 ---
 
+## 2026-11-17 | Claude
+- Đã làm: dời `styles.css`, `mobile.css`, `script.js`, `mobile.js`, `data/`, `fonts/`, `logo.png` vào thư mục `assets/` để thư mục gốc gọn (gõ `/script.js` giờ ra 404); `script.js` có thêm biến `ASSETS`; cập nhật đường dẫn trong mọi `*.html`, README, AGENTS; số phiên bản `?v=20261117a`. Thêm hướng dẫn Cloudflare trong README.
+- File đã sửa: tất cả `*.html`, `assets/script.js`, `README.md`, `AGENTS.md`, `AI-LOG.md`.
+- Còn dang dở: chủ web tự cấu hình Cloudflare nếu đổi được nameserver; các việc ở mục dưới.
+
+---
+
 ## 2026-11-16 | Claude (lần 3)
 - Đã làm: tách giao diện điện thoại thành module riêng `mobile.css` + `mobile.js`; trên màn ≤900px menu thành nút ba gạch xổ xuống (kiểu Faithful), giao diện máy tính giữ nguyên; thêm logo nhỏ vào chân trang (bật/tắt bằng `logo` trong `data/footer.js`); cập nhật số phiên bản `?v=20261116c`.
 - File đã sửa: `styles.css` (bỏ phần media điện thoại), `mobile.css`, `mobile.js`, `script.js`, `data/footer.js`, tất cả `*.html`, `README.md`, `AGENTS.md`.

@@ -9,10 +9,12 @@
    ===================================================================== */
 
 // Thư mục chứa script.js = gốc của website ("/" hoặc "/tên-repo/")
-const ROOT = (() => {
+// ASSETS = thư mục chứa script.js ("/assets/"); ROOT = gốc website, là thư mục cha của ASSETS
+const ASSETS = (() => {
   const src = document.currentScript && document.currentScript.src;
-  return src ? new URL(".", src).pathname : "/";
+  return src ? new URL(".", src).pathname : "/assets/";
 })();
+const ROOT = ASSETS.replace(/[^/]+\/$/, "");
 
 // Số phiên bản lấy từ "script.js?v=..." trong HTML, dùng chung cho các file data để điện thoại không giữ bản cũ
 const ASSET_V = (() => {
@@ -42,7 +44,7 @@ function siteUrl(path) {
 function loadScriptFile(path) {
   return new Promise((resolve) => {
     const script = document.createElement("script");
-    script.src = `${ROOT}${path}${ASSET_V ? "?v=" + ASSET_V : ""}`;
+    script.src = `${ASSETS}${path}${ASSET_V ? "?v=" + ASSET_V : ""}`;
     script.onload = script.onerror = () => resolve();
     document.head.append(script);
   });
@@ -268,7 +270,7 @@ function renderShell() {
     brand.href = ROOT;
     brand.setAttribute("aria-label", `${name} trang chủ`);
     const logo = el("img", "brand-logo");
-    logo.src = `${ROOT}logo.png`;
+    logo.src = `${ASSETS}logo.png`;
     logo.width = 960;
     logo.height = 181;
     logo.alt = name;
@@ -298,7 +300,7 @@ function renderShell() {
     const brandBox = el("div", "footer-brand");
     if (conf.logo !== false) {
       const flogo = el("img", "footer-logo");
-      flogo.src = `${ROOT}logo.png`;
+      flogo.src = `${ASSETS}logo.png`;
       flogo.width = 960;
       flogo.height = 181;
       flogo.alt = name;

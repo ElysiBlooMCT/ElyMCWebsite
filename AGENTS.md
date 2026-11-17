@@ -8,25 +8,26 @@
 
 ## Cấu trúc website
 
+- **Toàn bộ file kỹ thuật nằm trong thư mục `assets/`** (css, js, `data/`, `fonts/`, logo). Thư mục gốc chỉ có các trang, `404.html`, `CNAME` và tài liệu. File mới thuộc loại kỹ thuật thì đặt vào `assets/`, không để ở gốc. `script.js` tự suy ra đường dẫn gốc từ vị trí của nó.
 - Website tĩnh chạy trên GitHub Pages, **không có bước build**. Không thêm framework hay công cụ build.
-- Mỗi trang là một thư mục (`/rules/index.html`...), chỉ chứa khung HTML nhỏ. Header, menu và chân trang do `script.js` dựng chung.
-- **Nội dung nằm trong `data/*.js`** (mỗi module một file). Muốn đổi chữ/số liệu thì sửa file data, KHÔNG viết cứng vào HTML hay `script.js`.
-  - `data/site.js`: IP, port Bedrock, menu. `data/footer.js`: chân trang. `data/changelog.js`: lịch sử cập nhật của server.
+- Mỗi trang là một thư mục (`/rules/index.html`...), chỉ chứa khung HTML nhỏ. Header, menu và chân trang do `assets/script.js` dựng chung.
+- **Nội dung nằm trong `assets/data/*.js`** (mỗi module một file). Muốn đổi chữ/số liệu thì sửa file data, KHÔNG viết cứng vào HTML hay `assets/script.js`.
+  - `assets/data/site.js`: IP, port Bedrock, menu. `assets/data/footer.js`: chân trang. `assets/data/changelog.js`: lịch sử cập nhật của server.
 - Trong data: `{ip}`, `{port}`, `{name}` tự thay giá trị; `**chữ**` là in đậm; link nội bộ dạng `"/rules/"`.
 - Thêm trang mới: xem mục "Thêm một trang mới" trong `README.md`.
 
 ## Giao diện
 
-- Theme hồng / đỏ mận / đen lấy từ logo. Dùng các biến màu ở đầu `styles.css`, không tự thêm màu lạ.
-- Font tiêu đề VT323 tự host trong `fonts/` (có tiếng Việt). Không đổi sang font thiếu ký tự tiếng Việt.
+- Theme hồng / đỏ mận / đen lấy từ logo. Dùng các biến màu ở đầu `assets/styles.css`, không tự thêm màu lạ.
+- Font tiêu đề VT323 tự host trong `assets/fonts/` (có tiếng Việt). Không đổi sang font thiếu ký tự tiếng Việt.
 - Phải dùng tốt trên điện thoại (kiểm tra ở rộng 360px): không tràn ngang, nút bấm cao tối thiểu 40px, menu không bị cắt.
 - Chân trang phải luôn nằm sát đáy màn hình kể cả khi nội dung ngắn (body là flex column, `main` có `flex: 1 0 auto`). Đừng phá điều này.
 
-- **Điện thoại là module riêng**: `mobile.css` (chỉ có tác dụng khi màn ≤900px) và `mobile.js` (nút menu ba gạch). Sửa giao diện điện thoại ở đó; đừng thêm rule điện thoại vào `styles.css`. Giao diện máy tính (`styles.css`) giữ nguyên trừ khi chủ web yêu cầu.
+- **Điện thoại là module riêng**: `assets/mobile.css` (chỉ có tác dụng khi màn ≤900px) và `assets/mobile.js` (nút menu ba gạch). Sửa giao diện điện thoại ở đó; đừng thêm rule điện thoại vào `assets/styles.css`. Giao diện máy tính (`assets/styles.css`) giữ nguyên trừ khi chủ web yêu cầu.
 
 ## Khi sửa CSS / JS
 
-- Mỗi lần sửa `styles.css` hoặc `script.js`, **đổi số phiên bản `?v=...`** trong mọi file `.html` (kể cả `404.html`) để điện thoại không giữ bản cũ. Ví dụ `styles.css?v=20261116c` đổi thành `?v=20261117a`. Mẹo: tìm `?v=` trong repo rồi thay đồng loạt.
+- Mỗi lần sửa `assets/styles.css` hoặc `assets/script.js`, **đổi số phiên bản `?v=...`** trong mọi file `.html` (kể cả `404.html`) để điện thoại không giữ bản cũ. Ví dụ `?v=20261117a` đổi thành `?v=20261118a`. Mẹo: tìm `?v=` trong repo rồi thay đồng loạt.
 - Không dùng `innerHTML` với nội dung từ data (dùng `textContent`/hàm `el()` có sẵn).
 - Gõ sai data (thiếu dấu phẩy, dấu nháy) thì chỉ module đó bị ẩn; kiểm tra Console của trình duyệt.
 
