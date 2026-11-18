@@ -12,6 +12,13 @@ Mẫu:
 
 ---
 
+## 2026-11-18 | Claude (favicon)
+- Đã làm: thêm icon chữ E hồng làm favicon hiện trên tab trình duyệt (`assets/favicon.ico`, `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`) và gắn vào đầu mọi file `.html`; số phiên bản `?v=20261118a`. Repo đã chuyển sang `ElysiBlooMCT/ElyMCWebsite`.
+- File đã sửa: tất cả `*.html`, `assets/favicon*`, `assets/apple-touch-icon.png`, `AI-LOG.md`.
+- Còn dang dở: như các mục bên dưới. Trình duyệt giữ favicon rất lâu, nếu chưa thấy icon mới thì đóng hẳn tab rồi mở lại.
+
+---
+
 ## 2026-11-17 | Claude (xoá chú thích)
 - Đã làm: xoá toàn bộ chú thích trong `assets/script.js`, `assets/mobile.js`, `assets/styles.css`, `assets/mobile.css` và các file `.html`; giữ nguyên chú thích hướng dẫn trong `assets/data/*.js`; thêm quy tắc "không chú thích trong code công khai" vào `AGENTS.md`; số phiên bản `?v=20261117c`. Code JS được định dạng lại, chức năng không đổi.
 - File đã sửa: `assets/script.js`, `assets/mobile.js`, `assets/styles.css`, `assets/mobile.css`, tất cả `*.html`, `AGENTS.md`, `AI-LOG.md`.
